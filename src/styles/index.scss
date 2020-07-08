@@ -1,2 +1,32 @@
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'bootstrap';
+// global colors
+:root {
+  --color-background: rgba(0, 0, 0, 0.4);
+  --color-theme: #424242;
+  --color-router-link-active: #8BC34A;
+  --color-text: #6d6d6d;
+  --color-modal: #4e446b;
+}
+// global style for router links
+.router-link-exact-active {
+  color: var(--color-router-link-active) !important;
+}
+// globals base class styles
+.text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+}
+// turn off bootstrap focus styles
+.btn:focus,
+.form-control:focus,
+input:focus,
+button:focus {
+  outline: 0;
+  box-shadow: none;
+}
+// import internal modules
 @import "./navbar";
+@import "./card";
+@import "./modal";
+@import "./form";

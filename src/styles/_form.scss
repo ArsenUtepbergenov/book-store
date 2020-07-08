@@ -1,0 +1,19 @@
+.form {
+  &-content {
+    padding-top: 22px;
+  }
+}
+
+.form-progress {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 20px;
+}
+
+.form-button:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: transparent;
+  color: var(--bs-secondary);
+  border-color: var(--bs-secondary);
+}

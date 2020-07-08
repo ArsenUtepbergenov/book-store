@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 // import bootstrap lib
-import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap'
 // turn off warning about mode development
 Vue.config.productionTip = false
 // import all custom styles
