@@ -51,7 +51,6 @@
 
 <script>
 import { deleteBook, deleteImg, updateBook } from '../api/book-store-api'
-import router from '../router'
 import Modal from '../components/Modal'
 import CreateUpdateForm from '../components/CreateUpdateForm'
 

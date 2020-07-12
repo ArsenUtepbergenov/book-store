@@ -1,4 +1,4 @@
-// compare method for sort callbacks
+// compare methods for sort callbacks
 export function compareNumbers (firstParam, secondParam, direction) {
   if (direction)
     [firstParam, secondParam] = [secondParam, firstParam]
