@@ -1,7 +1,7 @@
 // The book details view
 
 <template>
-  <section class="book-details">
+  <section v-if="isReady" class="book-details">
     <Modal v-if="showModal" @close="toggleModal()">
       <CreateUpdateForm
         slot="body"
@@ -37,7 +37,7 @@
               <div class="card-body">
                 <h5 class="card-title">Author: {{book.author}}</h5>
                 <p class="card-text">Description: {{book.description}}</p>
-                <p class="card-text">
+                <p class="card-text font-weight-bold">
                   <small class="text-muted">Price: {{book.price}} руб.</small>
                 </p>
               </div>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { deleteBook, deleteImg, updateBook } from '../api/book-store-api'
+import { deleteBook, deleteImg, updateBook, fetchBook } from '../api/book-store-api'
 import Modal from '../components/Modal'
 import CreateUpdateForm from '../components/CreateUpdateForm'
 
@@ -60,12 +60,14 @@ export default {
     return {
       bookId: '',
       book: null,
-      showModal: false
+      showModal: false,
+      isReady: false
     }
   },
-  created () {
+  async created () {
     this.bookId = this.$route.params.id
-    this.book = this.$route.params.book
+    this.book = await fetchBook(this.bookId)
+    this.isReady = true
   },
   methods: {
     deleteBook () {

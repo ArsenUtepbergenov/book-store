@@ -17,6 +17,9 @@
   overflow: hidden;
   white-space: normal;
 }
+a {
+  cursor: pointer;
+}
 // turn off bootstrap focus styles
 .btn:focus,
 .form-control:focus,

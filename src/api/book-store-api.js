@@ -17,6 +17,15 @@ async function fetchBooks () {
   }
 }
 
+async function fetchBook (id) {
+  try {
+    const result = await db.collection('books').doc(id).get()
+    return result.data()
+  } catch (error) {
+    console.error(`Error: cannot get a book with id = ${id}: `, error)
+  }
+}
+
 async function deleteBook (id) {
   try {
     await db.collection('books').doc(id).delete()
@@ -60,5 +69,6 @@ export {
   deleteBook,
   deleteImg,
   updateBook,
-  createBook
+  createBook,
+  fetchBook
 }

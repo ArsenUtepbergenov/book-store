@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <textarea class="form-control form-textarea col-12" rows="5" v-model="updatedBook.description" placeholder="Description..." style="resize: none;"></textarea>
+            <textarea class="form-control form-textarea col-12" rows="4" v-model="updatedBook.description" placeholder="Description..." style="resize: none;"></textarea>
           </div>
           <div class="input-group mb-3">
             <button type="submit" class="btn btn-block btn-success form-button text-capitalize">{{textSubmitButton}}</button>
@@ -88,6 +88,7 @@
 
 <script>
 import mixinUploadImg from '../mixins/uploadImg'
+import { compareObjects } from '../utils/utils'
 
 export default {
   name: 'Form',
@@ -127,6 +128,8 @@ export default {
       this.uploadImg(this.updatedBook.imgFileName, this.imgFile)
     },
     updateBook () {
+      if (compareObjects(this.updatedBook, this.book))
+        return
       this.$emit('submit', this.updatedBook)
     },
     selectedImg (event) {
