@@ -128,7 +128,7 @@ export default {
       this.uploadImg(this.updatedBook.imgFileName, this.imgFile)
     },
     updateBook () {
-      if (compareObjects(this.updatedBook, this.book))
+      if (compareObjects(this.updatedBook, this.book || {}))
         return
       this.$emit('submit', this.updatedBook)
     },
