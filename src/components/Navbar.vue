@@ -2,8 +2,18 @@
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <Modal v-if="showLoginModal" @close="toggleLoginModal">
+      <template #body>
+        <LoginForm />
+      </template>
+    </Modal>
+    <Modal v-if="showSignUpModal" @close="toggleSignUpModal">
+      <template #body>
+        <SignUpForm />
+      </template>
+    </Modal>
     <div class="container-md">
-      <router-link class="navbar-brand  d-flex align-items-center" to="/">
+      <router-link class="navbar-brand d-flex align-items-center" to="/">
         <img src="../assets/brand.png" width="50" height="50" class="d-inline-block align-top" alt="brand" loading="lazy">
         Book Store
       </router-link>
@@ -11,7 +21,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <router-link class="nav-link" aria-current="page" to="/">
               <svg width="1.4em" height="1.4em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -38,13 +48,57 @@
             </router-link>
           </li>
         </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <button class="nav-link navbar-login-button" type="button" @click="toggleLoginModal">
+              <svg width="1.4em" height="1.4em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+              </svg>
+              Login
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link navbar-sign-up-button" type="button" @click="toggleSignUpModal">
+              <svg width="1.4em" height="1.4em" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                <path fill-rule="evenodd" d="M13 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z"/>
+              </svg>
+              Sign Up
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import Modal from '../components/Modal'
+import LoginForm from '../components/LoginForm'
+import SignUpForm from '../components/SignUpForm'
+
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data () {
+    return {
+      showLoginModal: false,
+      showSignUpModal: false
+    }
+  },
+  methods: {
+    toggleLoginModal () {
+      this.showLoginModal = !this.showLoginModal
+    },
+    toggleSignUpModal () {
+      this.showSignUpModal = !this.showSignUpModal
+    }
+  },
+  components: {
+    Modal,
+    LoginForm,
+    SignUpForm
+  }
 }
 </script>

@@ -5,4 +5,9 @@
   &-brand {
     font-family: Parkavenue, cursive;
   }
+  &-sign-up-button,
+  &-login-button {
+    background: transparent;
+    border: 0;
+  }
 }
