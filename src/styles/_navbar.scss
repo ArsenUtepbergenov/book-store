@@ -1,4 +1,13 @@
+.navbar-wrapper {
+  height: 560px;
+  background-image: url(../assets/nav-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 .navbar {
+  background: rgba(0, 0, 0, 0.7);
   .nav-link {
     font-size: 1.2em;
   }

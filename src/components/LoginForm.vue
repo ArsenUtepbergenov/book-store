@@ -34,17 +34,26 @@
           required />
       </div>
       <button type="submit" class="btn btn-success btn-block mb-3" :disabled="!isDisabled">Login</button>
+      <template v-if="status.message">
+        <StatusMessage
+          :status="status.status"
+          :message="status.message" />
+      </template>
     </form>
   </div>
 </template>
 
 <script>
+import { login } from '../api/auth-api'
+import StatusMessage from './StatusMessage'
+
 export default {
   name: 'LoginForm',
   data() {
     return {
       email: null,
-      password: null
+      password: null,
+      status: {}
     }
   },
   computed: {
@@ -53,9 +62,15 @@ export default {
     }
   },
   methods: {
-    login () {
-      console.log('test')
+    async login () {
+      this.status = await login(this.email, this.password)
+      if (this.status.status === 'success') {
+        this.$emit('change')
+      }
     }
+  },
+  components: {
+    StatusMessage
   }
 }
 </script>

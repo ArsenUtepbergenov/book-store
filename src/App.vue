@@ -2,8 +2,15 @@
 
 <template>
   <div id="app">
-    <Navbar />
-    <router-view/>
+    <div class="navbar-wrapper">
+      <Navbar />
+    </div>
+    <main>
+      <router-view/>
+    </main>
+    <footer class="d-flex justify-content-center align-items-center bg-dark text-white footer">
+      &copy;&nbsp;2020, all rights reserved.
+    </footer>
   </div>
 </template>
 
