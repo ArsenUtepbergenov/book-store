@@ -4,12 +4,11 @@ import 'firebase/storage'
 import 'firebase/auth'
 
 const config = {
-  apiKey: "AIzaSyBtBBq1EetvTmiYH_c5xGwBkv7m2jJAUjQ",
-  authDomain: "book-store-id.firebaseapp.com",
-  databaseURL: "https://book-store-id.firebaseio.com",
-  projectId: "book-store-id",
-  storageBucket: "book-store-id.appspot.com",
-  messagingSenderId: "101663699674"
+  apiKey: "AIzaSyADwSWhXqmX8RIrzUAHNsU04HsgvTVMZ7Q",
+  authDomain: "book-store-project-id.firebaseapp.com",
+  databaseURL: "https://book-store-project-id.firebaseio.com",
+  projectId: "book-store-project-id",
+  storageBucket: "book-store-project-id.appspot.com"
 }
 
 const firebaseApp = firebase.initializeApp(config)
