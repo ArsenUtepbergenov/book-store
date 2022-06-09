@@ -3,7 +3,7 @@
 <template>
   <section class="create-book">
     <CreateUpdateForm
-      @submit="newData => createBook(newData)"
+      @submit="createBook"
       textSubmitButton="create" />
   </section>
 </template>

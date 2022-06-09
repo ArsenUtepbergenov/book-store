@@ -1,6 +1,6 @@
 import { auth } from '../firebase/firebase'
 
-async function register (email, password) {
+async function register(email, password) {
   try {
     const { user } = await auth.createUserWithEmailAndPassword(email, password)
     console.log(`Account successfully created for ${user.email}`)
@@ -11,7 +11,7 @@ async function register (email, password) {
   }
 }
 
-async function login (email, password) {
+async function login(email, password) {
   try {
     const { user } = await auth.signInWithEmailAndPassword(email, password)
     console.log(`You are logged in as ${user.email}`)
@@ -22,7 +22,7 @@ async function login (email, password) {
   }
 }
 
-async function logout () {
+async function logout() {
   try {
     console.log('User successfully logged out')
     return { status: 'success', message: `You successfully logged out` }
@@ -40,8 +40,4 @@ auth.onAuthStateChanged(user => {
   }
 })
 
-export {
-  register,
-  login,
-  logout
-}
+export { register, login, logout }

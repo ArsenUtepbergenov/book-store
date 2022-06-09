@@ -1,13 +1,14 @@
 import router from '../router'
 import { db, storage } from '../firebase/firebase'
 
-async function fetchBooks () {
+async function fetchBooks() {
   try {
     const books = []
     const result = await db.collection('books').get()
     for (const doc of result.docs) {
       const dataDoc = {
-        id: doc.id, ...doc.data()
+        id: doc.id,
+        ...doc.data(),
       }
       books.push(dataDoc)
     }
@@ -17,18 +18,24 @@ async function fetchBooks () {
   }
 }
 
-async function fetchBook (id) {
+async function fetchBook(id: string) {
   try {
-    const result = await db.collection('books').doc(id).get()
+    const result = await db
+      .collection('books')
+      .doc(id)
+      .get()
     return result.data()
   } catch (error) {
     console.error(`Error: cannot get a book with id = ${id}: `, error)
   }
 }
 
-async function deleteBook (id) {
+async function deleteBook(id: string) {
   try {
-    await db.collection('books').doc(id).delete()
+    await db
+      .collection('books')
+      .doc(id)
+      .delete()
     console.log(`The book with id ${id}, successfully deleted!`)
     router.push({ name: 'Home' })
   } catch (error) {
@@ -36,7 +43,7 @@ async function deleteBook (id) {
   }
 }
 
-async function deleteImg (fileName) {
+async function deleteImg(fileName: string) {
   try {
     const imgRef = storage.ref().child('img/' + fileName)
     await imgRef.delete()
@@ -46,16 +53,23 @@ async function deleteImg (fileName) {
   }
 }
 
-async function updateBook (id, book) {
+async function updateBook(id: string, book: object) {
+  console.log(book)
+
   try {
-    await db.collection('books').doc(id).update(book)
+    await db
+      .collection('books')
+      .doc(id)
+      .update(book)
     console.log(`The book with id ${id}, successfully updated!`)
   } catch (error) {
     console.error(`Error: cannot update the book with id - ${id}: `, error)
   }
 }
 
-async function createBook (data) {
+async function createBook(data: object) {
+  console.log(data)
+
   try {
     const docRef = await db.collection('books').add(data)
     console.log(`The book with id ${docRef.id}, successfully created!`)
@@ -64,11 +78,4 @@ async function createBook (data) {
   }
 }
 
-export {
-  fetchBooks,
-  deleteBook,
-  deleteImg,
-  updateBook,
-  createBook,
-  fetchBook
-}
+export { fetchBooks, deleteBook, deleteImg, updateBook, createBook, fetchBook }

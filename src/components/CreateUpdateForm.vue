@@ -125,7 +125,7 @@ export default {
   },
   methods: {
     uploadUpdatedImg () {
-      this.uploadImg(this.updatedBook.imgFileName, this.imgFile)
+      this.uploadImg(this)
     },
     updateBook () {
       if (compareObjects(this.updatedBook, this.book || {}))
