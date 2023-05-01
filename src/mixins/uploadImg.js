@@ -1,8 +1,8 @@
-import { storage } from '../firebase/firebase'
+import { storage } from '../firebase'
 
 const mixinUploadImg = {
   methods: {
-    uploadImg(context: any) {
+    uploadImg(context) {
       const { updatedBook, imgFile } = context
       const storageRef = storage.ref()
       const imgRef = storageRef.child('img/' + updatedBook.imgFileName).put(imgFile)
