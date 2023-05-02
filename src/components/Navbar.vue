@@ -163,7 +163,7 @@
 import Modal from '../components/Modal'
 import LoginForm from '../components/LoginForm'
 import SignUpForm from '../components/SignUpForm'
-import { logout } from '../api/auth-api'
+import { logout } from '../services/auth'
 
 export default {
   name: 'Navbar',

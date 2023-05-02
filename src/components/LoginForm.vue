@@ -63,7 +63,7 @@
 
 <script setup>
 import { reactive, computed } from 'vue'
-import { login } from '../api/auth-api'
+import { login } from '../services/auth'
 
 const data = reactive({
   email: null,

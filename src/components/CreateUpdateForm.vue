@@ -152,7 +152,6 @@
 </template>
 
 <script>
-import mixinUploadImg from '../mixins/uploadImg'
 import { compareObjects } from '../utils/utils'
 
 export default {
@@ -201,6 +200,5 @@ export default {
       this.imgFileName = this.updatedBook.imgFileName = this.imgFile.name
     },
   },
-  mixins: [mixinUploadImg],
 }
 </script>

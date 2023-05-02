@@ -5,6 +5,6 @@
 </template>
 
 <script setup>
-import { createBook } from '../api/book-store-api'
+import { createBook } from '../services/book-store'
 import CreateUpdateForm from '../components/CreateUpdateForm'
 </script>

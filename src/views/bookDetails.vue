@@ -84,7 +84,7 @@
 </template>
 
 <script se>
-import { deleteBook, deleteImg, updateBook, fetchBook } from '../api/book-store-api'
+import { deleteBook, deleteImg, updateBook, fetchBook } from '../services/book-store'
 import Modal from '../components/Modal'
 import CreateUpdateForm from '../components/CreateUpdateForm'
 

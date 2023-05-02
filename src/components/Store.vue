@@ -123,7 +123,7 @@
 </template>
 
 <script>
-import { fetchBooks } from '../api/book-store-api'
+import { fetchBooks } from '../services/book-store'
 import { compareNumbers, compareStrings } from '../utils/utils'
 import Pagination from './Pagination'
 

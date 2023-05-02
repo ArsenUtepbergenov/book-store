@@ -1,6 +1,6 @@
 <template>
   <div class="container my-3">
-    <form class="form" @submit.prevent="register">
+    <form class="form" @submit.prevent="registration">
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">
           <svg
@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import { register } from '../api/auth-api'
+import { registration } from '../services/auth'
 import StatusMessage from './StatusMessage'
 
 export default {
@@ -113,8 +113,8 @@ export default {
     },
   },
   methods: {
-    async register() {
-      this.status = await register(this.email, this.password)
+    async registration() {
+      this.status = await registration(this.email, this.password)
     },
   },
   components: {

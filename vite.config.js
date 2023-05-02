@@ -20,7 +20,4 @@ export default defineConfig({
       esmExternals: true,
     },
   },
-  define: {
-    'process.env': {},
-  },
 })

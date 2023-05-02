@@ -3,10 +3,11 @@ import { toRaw } from 'vue'
 import { db } from '../firebase'
 import { getDocs } from '@firebase/firestore'
 import { deleteDoc, collection, doc, getDoc, addDoc } from 'firebase/firestore'
+import { Book, BookExtended } from '@/models/store'
 
 async function fetchBooks() {
   try {
-    const books = []
+    const books: BookExtended[] = []
 
     const querySnapshot = await getDocs(collection(db, 'books'))
 
@@ -15,7 +16,8 @@ async function fetchBooks() {
         id: doc.id,
         ...doc.data(),
       }
-      books.push(dataDoc)
+
+      books.push(dataDoc as BookExtended)
     })
 
     return books
@@ -58,7 +60,7 @@ async function deleteImg(fileName = '') {
   }
 }
 
-async function updateBook(id = '', book) {
+async function updateBook(id = '', book: Book) {
   console.log(book)
 
   try {
@@ -69,7 +71,7 @@ async function updateBook(id = '', book) {
   }
 }
 
-async function createBook(data) {
+async function createBook(data: Book) {
   const bData = toRaw(data)
 
   try {
